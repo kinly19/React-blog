@@ -11,26 +11,31 @@ const Home = () => {
     // ]);
 
     const [blogs, setBlogs] = useState(null);
+    const [isLoading, setIsLoading] = useState(true); //loading message to show only if true
 
 
     //fetch data with useEffect
     useEffect(() => {
-        fetch('http://localhost:8000/blogs')
-            .then(res => {
-                return res.json();
-            })
-            .then((data) => {
-                console.log(data)
-                setBlogs(data)
-            });
+        setTimeout(() => { //using setTimeout just to simulate isLoading message 
+            fetch('http://localhost:8000/blogs') // where to fetch data from 
+                .then(res => {
+                    return res.json();           //use json to parse data in as an object to use
+                })
+                .then((data) => {                //take that data and set the state
+                    console.log(data);
+                    setBlogs(data);
+                    setIsLoading(false);
+                });
+        }, 1000);
     }, []);
-
-
 
 
     return (
         <div className="home">
-            {blogs && <BlogList blogs={blogs} title="All Blogs!" />} {/* only outputs rightside if the left side is true, because blogs is null at first(false) it does nothing, once blogs has fetched its data blogs becomes true then it runs the right side of operand  */}
+            {isLoading && <div>Loading please wait...</div>} {/* when true show isLoading message */}
+            {blogs && <BlogList blogs={blogs} title="All Blogs!" />} {/* only outputs rightside if the left side is true, because blogs is null at first(false) it does nothing, once blogs has fetched its data blogs becomes true then it runs or returns the right side of operand  */}
+
+            {/* reusing component with different data */}
             {/* <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="Mario's Blogs!" />
             <BlogList blogs={blogs.filter((blog) => blog.author === 'yoshi')} title="Yoshi's Blogs!" /> */}
         </div>
