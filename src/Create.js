@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Create = () => {
 
@@ -9,6 +10,8 @@ const Create = () => {
 
     //handle loading message
     const [isPending, setIsPending] = useState(false);
+    //handle redirect with useHistory hook
+    const history = useHistory(); // create an object which represents useHistory, with this object we can use several methods(go back through history, go forwards, redirect etc)
 
     //handling onClick event for submit button (POST request)
     const handleSubmit = (e) => {
@@ -27,6 +30,7 @@ const Create = () => {
         }).then(() => {
             console.log('New Blog Added');
             setIsPending(false);
+            history.push('/'); //decide how many step we want to go back through history
         })
 
     }
