@@ -12,10 +12,9 @@ const BlogList = ({ blogs, title }) => {
             <h1>{title}</h1>
             {blogs.map((blog) => (
                 <div className="blog-preview" key={blog.id}>
-                    <Link to={`/blogs/${blog.id}`}> {/* we create a link that uses the blogs.id */}
+                    <Link to={`/blogs/${blog.id}`}> {/* we create a link that uses the blogs.id (capture blog.id in the links)*/}
                         <h2>{blog.title}</h2>
-                        <p>{blog.body}</p>
-                        <p>written by {blog.author}</p>
+                        <p>Written By {blog.author}</p>
                     </Link>
                 </div>
             ))}
