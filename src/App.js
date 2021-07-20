@@ -9,6 +9,7 @@ import NotFound from './NotFound';
 
 function App() {
   return (
+    //pay attention to your route order
     <Router>
       <div className="App">
         <Navbar /> {/* Self closing tag */}
@@ -20,12 +21,13 @@ function App() {
             <Route path="/create">
               <Create />
             </Route>
+            <Route path="/blogs/:id/edit">
+              <EditBlog />
+            </Route>
             <Route path="/blogs/:id">
               <BlogDetails />
             </Route>
-            {/* <Route path="/edit">
-              <EditBlog />
-            </Route> */}
+
             <Route path="*"> {/* catch any other route, place this at the bottom */}
               <NotFound />
             </Route>
