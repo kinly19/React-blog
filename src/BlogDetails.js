@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 import useFetch from "./useFetch";
 
 const BlogDetails = () => {
@@ -7,21 +7,16 @@ const BlogDetails = () => {
     const history = useHistory();
 
     const handleClick = () => {
-        fetch('http://localhost:8000/blogs/' + blog.id, {
+        fetch('http://localhost:8000/blogs/' + blog.id, { //gathering data on blogs with the id of the blog we want to delete
             method: 'DELETE'
         }).then(() => {
             history.push('/');
         })
     }
 
-    // const handleEdit = () => {
-    //     fetch('http://localhost:8000/blogs/' + blog.id, {
-    //         method: 'GET'
-    //     }).then(() => {
-    //         history.push('/edit')
-    //     })
-    // }
-
+    const handleEdit = () => {
+        history.push(id + '/edit');
+    }
 
     return (
         <div className="blog-details">
@@ -33,11 +28,11 @@ const BlogDetails = () => {
                     <p>Written By {blog.author}</p>
                     <div>{blog.body}</div>
                     <button onClick={handleClick}>Delete</button>
-                    {/* <button onClick={handleEdit}>Edit</button> */}
+                    <button onClick={handleEdit}>Edit</button>
                 </article>
             )}
-        </div>
 
+        </div>
     )
 }
 
