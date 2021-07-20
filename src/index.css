@@ -113,3 +113,16 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+.content-edit {
+  background-color: beige;
+  height: auto;
+  padding: 3rem;
+  text-align: center;
+}
+
+textarea {
+  height: 30rem;
+  width: 50rem;
+  
+}

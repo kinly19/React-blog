@@ -20,7 +20,7 @@ const useFetch = (url) => {
                     if (!res.ok) {               //Handle Error messages
                         throw Error('Error could not fetch data for that resource');
                     };
-                    return res.json();           //use json to parse data in as an object to use
+                    return res.json();           //use json to parse api data in as an object to use
                 })
                 .then((data) => {                //take that data and set the state
                     console.log(data);
